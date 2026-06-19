@@ -8,7 +8,7 @@
     "dev": "node --loader tsx src/server.ts",
     "build": "tsc",
     "start": "node dist/server.js",
-    "seed": "node --loader tsx seed.ts"
+    "seed": "node --loader tsx src/scripts/seed.ts"
   },
   "keywords": [],
   "author": "",

@@ -1,4 +1,6 @@
 /**
+ * /init-populate-octofit_db
+ *
  * Seed Script - Initialize and Populate octofit_db
  *
  * Command: npm run seed --prefix octofit-tracker/backend

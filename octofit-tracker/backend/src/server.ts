@@ -3,6 +3,12 @@ import cors from 'cors'
 import mongoose from 'mongoose'
 import 'dotenv/config'
 
+import usersRouter from './routes/users.js'
+import teamsRouter from './routes/teams.js'
+import activitiesRouter from './routes/activities.js'
+import workoutsRouter from './routes/workouts.js'
+import leaderboardRouter from './routes/leaderboard.js'
+
 const app = express()
 const PORT = 8000
 
@@ -21,9 +27,26 @@ mongoose
   .then(() => console.log('Connected to MongoDB'))
   .catch((err) => console.error('MongoDB connection error:', err))
 
-// Health check endpoint
+// API Routes
 app.get('/api/health', (req, res) => {
   res.json({ status: 'ok', baseUrl })
+})
+
+app.use('/api/users', usersRouter)
+app.use('/api/teams', teamsRouter)
+app.use('/api/activities', activitiesRouter)
+app.use('/api/workouts', workoutsRouter)
+app.use('/api/leaderboard', leaderboardRouter)
+
+// 404 handler
+app.use((req, res) => {
+  res.status(404).json({ error: 'Route not found' })
+})
+
+// Error handler
+app.use((err: any, req: express.Request, res: express.Response, next: express.NextFunction) => {
+  console.error(err.stack)
+  res.status(500).json({ error: 'Internal server error' })
 })
 
 // Start server

@@ -1,3 +1,23 @@
+/**
+ * Seed Script - Initialize and Populate octofit_db
+ *
+ * Command: npm run seed --prefix octofit-tracker/backend
+ * 
+ * This script:
+ * 1. Connects to MongoDB (octofit_db)
+ * 2. Clears all existing collections
+ * 3. Seeds test data including:
+ *    - 5 users (alex_runner, jordan_cyclist, casey_swimmer, morgan_climber, sam_athlete)
+ *    - 3 teams (Marathon Masters, Cycling Club, Cross-Training Warriors)
+ *    - 7 activities (running, cycling, swimming, climbing, strength training)
+ *    - 5 workouts (5K run, intervals, hill climb, swimming endurance, strength training)
+ *    - 7 leaderboard entries (monthly and annual rankings)
+ * 4. Disconnects from MongoDB
+ *
+ * Usage: Run this script once to populate the database with test data.
+ * Note: This will DELETE all existing data in the collections.
+ */
+
 import { connectDB, disconnectDB } from '../config/database.js'
 import {
   User,
